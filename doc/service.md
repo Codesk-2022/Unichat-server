@@ -4,7 +4,7 @@
 <Server>    = /types/server.ts
 <Category>  = /types/category.ts
 <Channel>   = /types/channel.ts
-<Message>   = /types/Message.ts
+<Message>   = /types/message.ts
 <jwt>       = (node-jsonwebtoken でパース可能なjwt)
 ```
 
