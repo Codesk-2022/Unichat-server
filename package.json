@@ -2,11 +2,11 @@
   "name": "unichat-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Codesk",
   "license": "ISC",
   "dependencies": {
     "ajv": "^8.10.0",
@@ -17,5 +17,6 @@
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "eslint": "^8.10.0"
-  }
+  },
+  "type": "module"
 }
