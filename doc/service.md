@@ -1,15 +1,19 @@
 # 定義
 ```
-<User>  = /types/user.ts
-<jwt>   = (jsonwebtokenでパース可能なjwt)
+<User>      = /types/user.ts
+<Server>    = /types/server.ts
+<Category>  = /types/category.ts
+<Channel>   = /types/channel.ts
+<Message>   = /types/Message.ts
+<jwt>       = (node-jsonwebtoken でパース可能なjwt)
 ```
 
 # SQL
 ## DATABASE unichat
 ### TABLE users
-|id						|username							|tag							|registered_at			|verified					|
-|-------------|---------------------|-----------------|-------------------|-----------------|
-|UUID	NOT NULL|varchar(30) NOT NULL	|smallint	NOT NULL|timestamp NOT NULL	|boolean NOT NULL	|
+|id						|email									|username							|password							|tag							|registered_at			|verified					|
+|-------------|-----------------------|---------------------|---------------------|-----------------|-------------------|-----------------|
+|UUID	NOT NULL|varchar(256) NOT NULL	|varchar(30) NOT NULL	|varchar(30) NOT NULL	|smallint	NOT NULL|timestamp NOT NULL	|boolean NOT NULL	|
 
 ### TABLE servers
 |id						|name									|owner				|categories	|emojis	|stamps	|created_at					|
