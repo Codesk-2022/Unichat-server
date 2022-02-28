@@ -6,6 +6,8 @@
 <Channel>   = /types/channel.ts
 <Message>   = /types/message.ts
 <jwt>       = (node-jsonwebtoken でパース可能なjwt)
+<token>			= (明確に決まっていないユーザー認証用のトークン)
+<?>					=	(不明の文字列)
 ```
 
 # SQL
@@ -80,4 +82,58 @@ Authorization: Basic <email:password>
 #### body
 ```
 <jwt>
+```
+
+## POST /server/create
+ユーザーのサーバーを作成
+### Request
+#### header
+```
+Authorization: <?> <token>
+Content-Type: application/json
+```
+#### body
+```
+{
+	"name":string
+}
+```
+### Response
+#### header
+```
+Content-Type: application/json
+```
+#### body
+```
+<Server>
+```
+
+## POST /server/delete
+ユーザーのサーバーを削除
+### Request
+#### header
+```
+Authorization: <?> <token>
+Content-Type: application/json
+```
+#### body
+```
+{
+	"id":UUID
+}
+```
+### success Response
+|status	|
+|-------|
+|200		|
+#### body
+```
+```
+
+### error Response
+|status	|
+|-------|
+|400		|
+#### body
+```
 ```
