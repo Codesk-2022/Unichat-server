@@ -1,10 +1,10 @@
 # 定義
 ```
-<User>      = /types/user.ts
-<Server>    = /types/server.ts
-<Category>  = /types/category.ts
-<Channel>   = /types/channel.ts
-<Message>   = /types/message.ts
+<User>      = /src/types/user.ts
+<Server>    = /src/types/server.ts
+<Category>  = /src/types/category.ts
+<Channel>   = /src/types/channel.ts
+<Message>   = /src/types/message.ts
 <jwt>       = (node-jsonwebtoken でパース可能なjwt)
 ```
 
@@ -71,7 +71,7 @@ Content-Type: application/json
 ```
 
 ## POST /user/login
-ベーシック認証を使ってjwtトークンを生成する
+Basic認証を使ってjwtトークンを生成する
 ### Request
 #### header
 ```
