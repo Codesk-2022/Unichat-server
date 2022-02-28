@@ -6,6 +6,7 @@
 <Channel>   = /src/types/channel.ts
 <Message>   = /src/types/message.ts
 <jwt>       = (node-jsonwebtoken でパース可能なjwt)
+<base64 $1>	=	(base64エンコードされた$1)
 ```
 
 # SQL
@@ -75,7 +76,12 @@ Basic認証を使ってjwtトークンを生成する
 ### Request
 #### header
 ```
-Authorization: Basic <email:password>
+Authorization: Basic <base64 email:password>
+```
+### Response
+#### header
+```
+WWW-Authenticate: Basic
 ```
 #### body
 ```
