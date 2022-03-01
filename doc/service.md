@@ -76,7 +76,11 @@ Content-Type: application/json
 ```
 
 ## POST /user/login
-ベーシック認証を使ってjwtトークンを生成する
+:::note note
+jwtはまだ検討中なので使わない
+:::
+
+Basic認証を使ってjwtトークンを生成する
 ### Request
 #### header
 ```

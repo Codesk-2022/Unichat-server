@@ -1,0 +1,37 @@
+<html>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const f = (src)=>{
+      const toCreate = (t,name="<name>")=>{
+        const table=t;
+        let res = `CREATE TABLE ${name} (\n`;
+        const h = table.header.map(x=>x.text);
+        const r = table.rows[0];
+        globalThis.maxL = table.header.sort((a,b)=>b.text.length-a.text.length)[0].text.length;
+        h.map((_,i)=>[h[i],r[i]]).forEach(([k,v],i)=>{
+            res+=`  "${k}"${" ".repeat(maxL-k.length)+" "}${v.text}${(i+1)<h.length ? "," : ""}\n`;
+        });
+        res+=");";
+        return res
+      }
+      const md = marked.lexer(src);
+      let res = "";
+      for (let i=0;i<md.length;){
+        const e = md[i];
+        if (e.type==="heading"){
+          res+=toCreate(md[i+=1],e.text.replace(/\s|TABLE/g,""))+"\n\n";
+        }
+        i++;
+      }
+      return res;
+    };
+    const e = document.createElement(`div`);
+    e.innerHTML=`<textarea></textarea><button>click</button>`;
+    e.children[1].addEventListener("click",()=>{
+      e.children[0].value=f(e.children[0].value,"<edit here>");
+    });
+    document.body.append(e);
+  </script>
+</body>
+</html>
