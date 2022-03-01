@@ -13,21 +13,21 @@ services:
     ports:
       - 5000:5432
     restart: always
-  #nodejs:
-  #  build: .
-  #  command: npm run start
-  #  environment:
-  #    - PORT=8000
-  #    - NGINX_PORT=80
-  #    - postgresHost=postgres
-  #    - postgresPort=5432
-  #    - postgresUser=postgres
-  #    - postgresDB=postgres
-  #    - postgresPass=root
-  #    - issuer=localhost:8080
-  #  restart: always
-  #  depends_on:
-  #    - postgres
-  #  #  - redis
-  #  ports:
-  #    - 8080:80
+  nodejs:
+    build: .
+    command: npm run start
+    environment:
+      - PORT=8000
+      - NGINX_PORT=80
+      - postgresHost=postgres
+      - postgresPort=5432
+      - postgresUser=postgres
+      - postgresDB=postgres
+      - postgresPass=root
+      - issuer=localhost:8080
+    restart: always
+    depends_on:
+      - postgres
+    #  - redis
+    ports:
+      - 8080:80
