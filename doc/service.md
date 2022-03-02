@@ -170,4 +170,24 @@ Content-Type: application/json
 <Channel[]>
 ```
 [^server-channels-1]: 例: プライベートチャンネル
+
+## GET /server/:id/members
+### Request
+#### header
+```
+Authentication: Basic <email:password>
+```
+#### body
+```
+```
+
+### Response
+#### header
+```
+Content-Type: application/json
+```
+#### body
+```
+<User[]>
+```
 <!--#endregion server -->
