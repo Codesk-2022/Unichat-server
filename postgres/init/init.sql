@@ -14,17 +14,8 @@ CREATE TABLE servers (
   "id"         UUID    NOT NULL,
   "name"       varchar(30) NOT NULL,
   "owner"      UUID    NOT NULL,
-  "categories" UUID[],
   "emojis"     UUID[],
   "stamps"     UUID[],
-  "created_at" timestamp NOT NULL
-);
-
-CREATE TABLE categories (
-  "id"         UUID    NOT NULL,
-  "name"       varchar(30) NOT NULL,
-  "server"     UUID NOT NULL,
-  "channels"   UUID[],
   "created_at" timestamp NOT NULL
 );
 
@@ -33,7 +24,8 @@ CREATE TABLE channels (
   "name"        varchar(30) NOT NULL,
   "description" varchar(120),
   "server"      UUID NOT NULL,
-  "category"    UUID NOT NULL,
+  "is_private"  boolean,
+  "members"     UUID[],
   "created_at"  timestamp NOT NULL
 );
 
