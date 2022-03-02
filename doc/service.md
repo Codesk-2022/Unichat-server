@@ -141,7 +141,7 @@ Content-Type: application/json
 ```
 
 ## /server/:id/channels
-### querys
+### queries
 |private																	|
 |-----------------------------------------|
 |`type T = "true"\|"false"\|"all"\|null`	|
