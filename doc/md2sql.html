@@ -28,10 +28,12 @@
     };
     const e = document.createElement(`div`);
     e.innerHTML=`<textarea></textarea><button>click</button>`;
-    e.children[1].addEventListener("click",()=>{
-      e.children[0].value=f(e.children[0].value,"<edit here>");
-    });
     document.body.append(e);
+    const textarea = document.querySelector("div > textarea");
+    const button = document.querySelector("div > button");
+    button.addEventListener("click",()=>{
+      textarea.value=f(textarea.value,"<edit here>");
+    });
   </script>
 </body>
 </html>
