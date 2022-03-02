@@ -1,6 +1,6 @@
 import express from "express";
 import bodyparser from "body-parser";
-import Client from "pg";
+const {Client} = await import("pg");
 
 const app = express();
 app.use(bodyparser.json());
