@@ -26,4 +26,4 @@ app.post("/api/user/login", (req,res) => {
     console.log(req);
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 8000);
