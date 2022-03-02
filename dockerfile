@@ -40,7 +40,7 @@ http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
 
 # configure nginx
 WORKDIR /etc/nginx/conf.d/
-COPY *.conf ./nginx/conf/
+COPY ./nginx/conf/*.conf ./ 
 
 # configure frontend
 WORKDIR /usr/share/nginx/html
@@ -48,8 +48,9 @@ WORKDIR /usr/share/nginx/html
 # configure APIserver
 WORKDIR /usr/src/app/
 COPY package*.json ./
+COPY tsconfig.json ./
 RUN npm i
-COPY src ./
+COPY ./src ./src
 RUN npm run build
 
 CMD service nginx start \
