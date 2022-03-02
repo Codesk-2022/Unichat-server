@@ -1,9 +1,7 @@
 # 定義
-`$<number>`は引数、`$$`はワイルドカードとする。
-`$int`は整数値、`$float`は実数値、また次のように引数型にすることもできることにする。`$<number>:<typename>`
-`...`は繰り返しを意味する。`(`,`)`で囲ったものはグループとする。
-`[`,`]`で囲ったものは省略可能グループとする。
-また以上で定義したものはただの単一の文字としても表記される。
+`$<number>`は引数、`*`はワイルドカードとする。
+
+クエリーにある`null`は省略可能とする。
 ```
 <User>      	= /types/user.ts
 <Server>    	= /types/server.ts
@@ -12,8 +10,7 @@
 <Message>   	= /types/message.ts
 <jwt>       	= (node-jsonwebtoken でパース可能なjwt)
 <token>				= (明確に決まっていないユーザー認証用のトークン)
-<$$[]>				=	($$の配列)
-<$$[$0:int]>	=	(最大サイズ$0の$$の配列)
+<*[]>					=	(*の配列)
 <?>						=	(不明の文字列)
 ```
 
@@ -94,12 +91,17 @@ Authorization: Basic <email:password>
 <!--#endregion user -->
 ----
 <!--#region server -->
+
+## GET /server/:id
+サーバー`:id`を返します
+- 存在しないサーバーの場合はステータスを`404`に指定し空のデータを返す。
+
 ## POST /server/create
 ユーザーのサーバーを作成
 ### Request
 #### header
 ```
-Authorization: <?> <token>
+Authorization: Basic <token>
 Content-Type: application/json
 ```
 #### body
@@ -118,12 +120,12 @@ Content-Type: application/json
 <Server>
 ```
 
-## POST /server/delete
+## DELETE /server/:id/delete
 ユーザーのサーバーを削除
 ### Request
 #### header
 ```
-Authorization: <?> <token>
+Authorization: Basic <token>
 Content-Type: application/json
 ```
 #### body
@@ -133,14 +135,12 @@ Content-Type: application/json
 }
 ```
 ### Response
-|status	|
-|-------|
-|200		|
 #### body
 ```
 ```
 
 ## /server/:id/channels
+サーバー`:id`のチャンネル一覧を返します
 ### queries
 |private																	|
 |-----------------------------------------|
@@ -156,9 +156,6 @@ Content-Type: application/json
 ```
 Authentication: Basic <email:password>
 ```
-#### body
-```
-```
 
 ### Response
 #### header
@@ -172,6 +169,7 @@ Content-Type: application/json
 [^server-channels-1]: 例: プライベートチャンネル
 
 ## GET /server/:id/members
+サーバー`:id`のメンバー一覧を返します
 ### Request
 #### header
 ```
@@ -190,4 +188,69 @@ Content-Type: application/json
 ```
 <User[]>
 ```
+
+## POST /server/:id/join
+サーバー`:id`に参加します
+### Request
+#### haeder
+```
+Authentication: Basic <email:password>
+```
+#### body
+```
+```
+
+### Response
+#### header
+```
+Content-Type: application/json
+```
+#### body
+```
+<server>
+```
+
+## DELETE /server/:id/leave
+サーバー`:id`から離脱します
+### Request
+#### header
+```
+Authentication: Basic <email:password>
+```
+
+### Response
+#### header
+```
+Content-Type: application/json
+```
+#### body
+```
+<server>
+```
 <!--#endregion server -->
+----
+<!--#region channel -->
+## GET /channels/:id/messages
+### queries
+|from						|to						|limit		|user					|
+|---------------|-------------|---------|-------------|
+|`Date\|null`		|`Date\|null`	|`Date`		|`UUID|null`	|
+
+### Request
+#### header
+```
+Authentication: Basic <email:password>
+```
+
+### Response
+#### header
+```
+Content-Type: application/json
+```
+
+### body
+```
+<message[]>
+```
+
+<!--#endregion channel -->
