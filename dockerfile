@@ -48,7 +48,7 @@ WORKDIR /usr/share/nginx/html
 # configure APIserver
 WORKDIR /usr/src/app/
 COPY package*.json ./
-RUN NPM i
+RUN npm i
 COPY src ./
 RUN npm run build
 
