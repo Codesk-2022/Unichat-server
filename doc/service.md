@@ -27,9 +27,9 @@
 |UUID	NOT NULL|varchar(30) NOT NULL	|UUID	NOT NULL|UUID[]	|UUID[]	|timestamp NOT NULL	|
 
 ### TABLE channels
-|id						|name									|description	|server				|is_private	|members|created_at					|
-|-------------|---------------------|-------------|-------------|-----------|-------|-------------------|
-|UUID	NOT NULL|varchar(30) NOT NULL	|varchar(120)	|UUID NOT NULL|boolean		|UUID[]	|timestamp NOT NULL	|
+|id						|name									|description	|server				|is_private				|members|created_at					|
+|-------------|---------------------|-------------|-------------|-----------------|-------|-------------------|
+|UUID	NOT NULL|varchar(30) NOT NULL	|varchar(120)	|UUID NOT NULL|boolean NOT NULL	|UUID[]	|timestamp NOT NULL	|
 
 ### TABLE messages
 |id						|user						|content							|server				|channel			|created_at					|

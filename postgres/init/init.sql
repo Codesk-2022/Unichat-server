@@ -24,7 +24,7 @@ CREATE TABLE channels (
   "name"        varchar(30) NOT NULL,
   "description" varchar(120),
   "server"      UUID NOT NULL,
-  "is_private"  boolean,
+  "is_private"  boolean NOT NULL,
   "members"     UUID[],
   "created_at"  timestamp NOT NULL
 );
@@ -37,4 +37,3 @@ CREATE TABLE messages (
   "channel"    UUID NOT NULL,
   "created_at" timestamp NOT NULL
 );
-
