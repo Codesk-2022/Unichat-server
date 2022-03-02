@@ -15,7 +15,6 @@ services:
     restart: always
   nodejs:
     build: .
-    command: npm run start
     environment:
       - PORT=8000
       - postgresHost=postgres
