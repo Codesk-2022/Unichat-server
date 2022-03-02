@@ -45,6 +45,10 @@ expressへのリバースプロキシ。
 リバースプロキシはwebsocketに対応しているものが好まれます
 
 # express
+
+- データが存在しない場合はステータスを`404`にして空のデータを返す。
+- アクセスする権限がない場合はステータスを`400`にして空のデータを返す。
+
 <!--#region user -->
 ## POST /user/signup
 ユーザー情報をDBに登録して確認メールを送る。`0時`, `12時`の間に確認がされなければユーザー情報を削除。
@@ -94,7 +98,6 @@ Authorization: Basic <email:password>
 
 ## GET /server/:id
 サーバー`:id`を返します
-- 存在しないサーバーの場合はステータスを`404`に指定し空のデータを返す。
 
 ## POST /server/create
 ユーザーのサーバーを作成
@@ -253,4 +256,66 @@ Content-Type: application/json
 <message[]>
 ```
 
+## POST /channels/:id/messages
+メッセージを投稿します。
+### Request
+#### header
+```
+Authorization: Basic <email:password>
+Content-Type: application/json
+```
+#### body
+```
+{
+	"content":string
+}
+```
+
+### Response
+#### header
+```
+Content-Type: application/json
+```
+#### body
+```
+<message>
+```
 <!--#endregion channel -->
+----
+<!--#region messages -->
+## GET /messages/:id
+メッセージを返す。
+### Request
+#### header
+```
+Authorization: Basic <email:password>
+```
+
+### Response
+#### header
+```
+Content-Type: application/json
+```
+#### body
+```
+<message>
+```
+
+## DELETE /messages/:id
+メッセージを削除する。
+### Request
+#### header
+```
+Authorization: Basic <email:password>
+```
+
+### Response
+#### header
+```
+Content-Type: application/json
+```
+#### body
+```
+<message>
+```
+<!--#endregion messages -->
