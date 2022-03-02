@@ -1,7 +1,9 @@
 import express from "express";
 import bodyparser from "body-parser";
-import Client from "pg";
 
+import require from "./util/require.js";
+
+const {Client} = await require("pg");
 const app = express();
 app.use(bodyparser.json());
 const client = new Client({
