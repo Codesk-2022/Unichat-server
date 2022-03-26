@@ -52,7 +52,7 @@ expressへのリバースプロキシ。
 - アクセスする権限がない場合はステータスを`403`にして空のデータを返す。
 
 <!--#region user -->
-## POST /user/signup
+## POST /user/register
 ユーザー情報をDBに登録して確認メールを送る。`0時`, `12時`の間に確認がされなければユーザー情報を削除。
 ### Request
 #### header
